@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EKSPERIMENTI</title>
+  <meta name="description" content="Oblak" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <link rel="icon" type="image/png" href="static/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="static/main.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>Eksperimenti</h1>
+  </div>
+  
+  <div class="section">
+  <p>Navodila</p>
+
+  <ul>
+    {% for row in experiments %}
+    <li>
+      <a href="{{ url_for('eksperiment_podrobnosti', ime_eksperimenta=row[0]) }}">{{ row[0] }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <form action="{{ url_for('eksperimenti')}}" method="POST">
+
+    <h3>Vpiši ime eksperimenta in informacijo o eksperimentu</h3>
+
+    <p>Ime eksperimenta</p><br>
+    <input type="text" name="name">
+
+    <p>lokacija</p><br>
+    <input type="text" name="lokacija">
+
+    <p>datum</p><br>
+    <input type="text" name="datum">
+
+    <p>izvajalec</p><br>
+    <input type="text" name="izvajalec"><br>
+
+    <input type="submit" value="submit">
+  </form>
+
+  </div>
+</body>
+</html>

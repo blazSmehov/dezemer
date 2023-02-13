@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EKSPERIMENTI</title>
+  <meta name="description" content="Oblak" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <link rel="icon" type="image/png" href="static/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="static/style.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>Eksperimenti</h1>
+  </div>
+  
+  <div class="section">
+  <p>Navodila</p>
+  <p>S klikom na gumb Start zaženete eskperiment. Stop prekine pošiljanje podatkov iz simulatorja na strežnik.</p>
+  <form id="form1" action="/eksperimenti_konfiguracija" method="post" accept-charset="utf-8" autocomplete="on">
+    <div>
+    <p>Eksperiment1</p>
+      <button type="submit">Start</button>
+      <button type="submit">Stop</button>
+    </div>
+    <div>
+      <p>Eksperiment2</p>
+      <button type="submit">Start</button>
+      <button type="submit">Stop</button>
+    </div>
+  </form>
+  <h1>Vnos konfiguracije eksperimenta</h1>
+
+  <p>Prosim vpišite spremenljivke, ki so značilne za meritev.</p>
+
+  <form id="form2" action="/eksperimenti_konfiguracija" method="POST"> 
+  
+    <div>
+      <label for="visinaStojala">Višina stojala [cm]</label>
+      <input type="number" name="visinaStojala" id="visinaStojala" min="1" max="2" required>
+    </div>
+    <div>
+      <label for="pretok">Pretok[l/s oz. dm^3/s]</label>
+      <input type="number" name="pretok" id="pretok" required>
+    </div>
+    <div>
+      Lokacija dežemera ->
+      Izberite eno od naslednjih možnosti:
+      <div>
+        <label for="center">C (Center)</label>
+        <input type="radio" name="lokacijaDezemera" id="center">
+      </div>
+      <div>
+        <label for="x">X os</label>
+        <input type="radio" name="lokacijaDezemera" id="x">
+        <label for="odmikPoXu">odmik po X osi</label>
+        <input type="number" name="lokacijaDezemera" id="odmikPoXu">
+      </div>
+      <div>
+        <label for="y">Y os</label>
+        <input type="radio" name="lokacijaDezemera" id="y">
+        <label for="odmikPoYu">odmik po Y osi</label>
+        <input type="number" name="lokacijaDezemera" id="odmikPoYu">
+      </div>      
+    </div>
+      <div>
+          <label for="izvajalec">Izvajalec/ka meritev [ime in priimek]</label>
+          <input type="text" name="izvajalec" id="izvajalec" required>
+      </div>
+
+      <div>
+          <label for="komentar">Komentar [neobvezno, do 60 znakov]</label>
+          <textarea id="komentar" name="komentar"></textarea>
+      </div>
+      <button type="submit">Pošlji</button>
+    </form>
+  </div>
+</body>
+</html>
